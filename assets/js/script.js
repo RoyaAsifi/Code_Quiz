@@ -25,3 +25,38 @@ const questions = [
         answer: "d. console.log"
     }
 ];
+
+// creating variables 
+const startBtn = document.querySelector("startButton");
+var timeDisplay = document.querySelector("topBar");
+var timer = document.getElementById("timer");
+var countdown = document.getElementById("timeLeft");
+var questionNumber = 0
+var timeleft = 0;
+var quizTime = 0;
+
+function startQuiz () {
+    timeleft = 100
+    startTimer();
+    firstScreen();
+}
+function startTimer() {
+    timer.innerHTML = (timeLeft);
+    quizTime = setInterval(cntDown, 1000);
+}
+function cntDown() {
+    if (timeLeft !==0) {
+        timeLeft--
+        timer.innerHTML = (timeLeft)
+    }
+    else {
+        clearInterval(quizTime)
+        quizOver();
+    }
+    return;
+}
+function firstScreen() {
+    document.querySelectorAll("container").forEach(container.display = "none")
+    document.querySelectorAll("quizSection").forEach(quizSection.display = "initial")
+    quiz(questionNumber);
+}
