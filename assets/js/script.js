@@ -1,3 +1,4 @@
+// Array of questions.
 const questions = [
     {
         question: "Commonly used data type DO NOT include:",
@@ -26,16 +27,26 @@ const questions = [
     }
 ];
 
-// creating variables 
-const startBtn = document.querySelector("startButton");
+// Variables for the timer.
 var timeDisplay = document.querySelector("topBar");
 var timer = document.getElementById("timer");
 var countdown = document.getElementById("timeLeft");
-var questionNumber = 0
 var timeleft = 0;
 var quizTime = 0;
 
+// Variables for start button.
+var startBtn = document.querySelector("startButton");
+var questionNumber = 0
+
+startBtn.addEventListener("click", startQuiz) {
+    startQuiz.preventDefault();
+    startTimer();
+    startQuiz();
+};
+
+
 function startQuiz () {
+    console.log("Quiz has started")
     timeleft = 100
     startTimer();
     firstScreen();
