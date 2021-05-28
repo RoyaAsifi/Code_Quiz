@@ -1,28 +1,43 @@
 // Array of questions.
-const questions = [
+var quizQuestions = [
     {
         question: "Commonly used data type DO NOT include:",
-        choices: ["a. strings", "b. booleans", "c. alerts", "d. numbers"],
+        choiceA: "strings",
+        choiceB: "booleans", 
+        choiceC: "alerts", 
+        choiceD: "numbers",
         answer: "c. alerts"
     },
     {
         question: "The condition in an if/else statement is enclosed within _____:",
-        choices: ["a. quotes", "b. curly brackets", "c. parenthesis", "d. square brackets"],
+        choiceA: "quotes", 
+        choiceB: "curly brackets", 
+        choiceC: "parenthesis",
+        choiceD: "square brackets",
         answer: "c. parenthesis"
     },
     {
         question: "Arrays in a JavaScript can be used to store:",
-        choices: ["a. numbers and strings", "b. other arrays", "c. booleans", "d. all of the above"],
+        choiceA: "numbers and strings", 
+        choiceB: "other arrays", 
+        choiceC: "booleans", 
+        choiceD: "all of the above",
         answer: "d. all of the above"
     },
     {
         question: "String values muse be enclosed within ______ when being assigned to variables.",
-        choices: ["a. commas", "b. curly brackets", "c. quotes", "d. parenthesis"],
+        choiceA: "commas", 
+        choiceB: "curly brackets", 
+        choiceC: "quotes", 
+        choiceD: "parenthesis",
         answer: "c. quotes"
     },
     {
         question: "A very useful tool during development and debugging for printing content to the debugger is:",
-        choices: ["a. JavaScript", "b. terminal/bash", "c. for loops", "d. console.log"],
+        choiceA: "JavaScript", 
+        choiceB: "terminal/bash", 
+        choiceC: "for loops", 
+        choiceD: "console.log",
         answer: "d. console.log"
     }
 ];
@@ -66,8 +81,13 @@ function startTimer() {
 }
 
 function firstScreen() {
-    var container= document.querySelectorAll(".container");
-    var choices= document.querySelectorAll("#questionSection");
-    //quiz(questionNumber);
+    var container = document.querySelector(".container");
+    var choices = document.querySelector("#questionSection");
+    container.style.visibility = "hidden";
+    score.style.visibility = "hidden";
+
+    document.getElementById("questionTitle").textContent = quizQuestions;
+
+    // quiz(questionNumber);
 
 }
