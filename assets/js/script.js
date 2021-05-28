@@ -85,7 +85,7 @@ function startTimer() {
             clearInterval(timeSet)
             console.log("times up")
             alert("Quiz Over!")
-            //quizOver();
+            finalScore()
         }
     }, 1000);
     
@@ -93,13 +93,13 @@ function startTimer() {
 
 function firstScreen() {
     var container = document.querySelector(".container");
-    var choices = document.querySelector("#questionSection");
-    var score = document.getElementById("score")
     container.style.visibility = "hidden";
-    score.style.visibility = "hidden";
-    if (questionNumber === finalQuestion){
-        return score;
-    }
+    var score=document.querySelector('#score');
+    score.style.visibility="hidden";
+
+
+
+
     var currentQuestion = quizQuestions[questionNumber];
     const questionP = document.querySelector("#questionTitle");
   //   console.log(currentQuestion.question);
@@ -111,35 +111,44 @@ function firstScreen() {
 }
 
 function checkAnswer(event){
-    console.log(event.target.textContent)
+   
     var correct = quizQuestions[questionNumber].answer;
     var userAns = event.target.textContent
-    console.log(correct)
-     if (userAns === correct && questionNumber !== finalQuestion){
-        score++;
+   
+     if (userAns === correct){
         alert("Correct!");
         questionNumber++;
         firstScreen();
-     } else if (userAns !== correct && questionNumber !== finalQuestion){
+     } else if (userAns !== correct){
         alert("Incorrect.")
+        timeLeft-=10;
         questionNumber++;
-        firstScreen();  
-        timeSet.innerHTML = timeLeft -= 10
+        firstScreen(); 
      } 
-     if (finalQuestion -1 == questionNumber){
-         console.log ("test")
+     if (questionNumber===quizQuestions.length-1){
+         finalScore()
      }
 }
 
-function finalScore(event){
-    document.querySelector(".quiz").forEach(quiz => { quiz.style.display = "none" })
+function finalScore(){
+    clearInterval(timeSet)
+    var questionSection = document.querySelector("#questionSection");
+    questionSection.style.visibility = "hidden";
+    
+    var score=document.querySelector('#score')
+    score.style.visibility="visible"
 
-    timer.innerHTML = (0)
+    console.log('test')
+
 
     var submit = document.getElementById("submitInitialBtn")
+
     submit.addEventListener("click", function(){
-        var value = document.querySelector('.initials').value;
-       localStorage.setItem(value, score)
+        var initials = document.querySelector('.initials').value;
+        var score=timeLeft;
+
+        
+       localStorage.setItem(initials,score )
     });  
-    clearInterval(quizQuestions)
+    
 }
