@@ -55,6 +55,7 @@ var startBtn = document.querySelector("#startButton");
 var questionNumber = 0
 var finalQuestion = quizQuestions.length
 var currentQuestion = 0
+var correct;
 var buttonA = document.getElementById("btn0");
 var buttonB = document.getElementById("btn1");
 var buttonC = document.getElementById("btn2");
@@ -94,14 +95,27 @@ function firstScreen() {
     if (questionNumber === finalQuestion){
         return score();
     }
-    var currentQuestion = quizQuestions[currentQuestion];
-    quizQuestions.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    var currentQuestion = quizQuestions[questionNumber];
+    const questionP = document.querySelector("#questionTitle");
+  //   console.log(currentQuestion.question);
+  questionP.innerHTML = "<p>" + currentQuestion.question + "</p>";
     buttonA.innerHTML = currentQuestion.choiceA;
     buttonB.innerHTML = currentQuestion.choiceB;
     buttonC.innerHTML = currentQuestion.choiceC;
     buttonD.innerHTML = currentQuestion.choiceD;
+}
 
+function checkAnswer(answer){
+    correct = quizQuestions[currentQuestion].correctAnswer;
 
-    // quiz(questionNumber);
-
+    if (answer === correct && currentQuestion !== finalQuestion){
+        score++;
+        alert("Correct!");
+        currentQuestion++;
+        generateQuizQuestion();
+    }else if (answer !== correct && currentQuestion !== finalQuestion){
+        alert("Incorrect.")
+        currentQuestion++;
+        firstScreen();  
+    }
 }
