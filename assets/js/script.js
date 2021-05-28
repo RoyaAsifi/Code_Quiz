@@ -120,12 +120,20 @@ function checkAnswer(event){
      if (userAns === correct && questionNumber !== finalQuestion){
         score++;
         alert("Correct!");
+        if (questionNumber !== (questionNumber.length - 1)){
         questionNumber++;
+        } else{
+        return score;
+        }
         firstScreen();
-    } else if (userAns !== correct && questionNumber !== finalQuestion){
+     } else if (userAns !== correct && questionNumber !== finalQuestion){
         alert("Incorrect.")
+        if (questionNumber !== (quizQuestions.length - 1)){
         questionNumber++;
+        }else{
+        return score;
+        }
         firstScreen();  
         timeSet.innerHTML = timeLeft -= 10
-     }
+     } 
 }
