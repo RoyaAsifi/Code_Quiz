@@ -31,7 +31,8 @@ const questions = [
 var timeDisplay = document.querySelector("topBar");
 var timer = document.getElementById("timer");
 var countdown = document.getElementById("timeLeft");
-var timeleft = 0;
+var timeLeft = 0;
+var timeSet;
 var quizTime = 0;
 
 // Variables for start button.
@@ -42,34 +43,31 @@ startBtn.addEventListener("click", startQuiz)
 
 function startQuiz () {
     console.log("Quiz has started")
-    timeleft = 100
+    timeLeft = 100
     startTimer();
     firstScreen();
 }
 
 function startTimer() {
-    timer.innerHTML = (timeLeft);
-    quizTime = setInterval(cntDown, 1000);
-}
-function cntDown() {
-    if (timeLeft !==0) {
-        timeLeft--
-        timer.innerHTML = (timeLeft)
-    }
-    else {
-        clearInterval(quizTime)
-        quizOver();
-    }
-    return;
-}
-function firstScreen() {
-    document.querySelectorAll(".container");
-    document.querySelectorAll("#questionSection");
-    quiz(questionNumber);
-}
-function container() {
 
+    timeSet=setInterval(() => {
+        timer.innerHTML = timeLeft;
+        if (timeLeft !==0) {
+            timeLeft--
+            timer.innerHTML = timeLeft;
+        }
+        else {
+            clearInterval(timeSet)
+            console.log("times up")
+            //quizOver();
+        }
+    }, 1000);
+    
 }
-function quiz() {
-    questions();
+
+function firstScreen() {
+    var container= document.querySelectorAll(".container");
+    var choices= document.querySelectorAll("#questionSection");
+    //quiz(questionNumber);
+
 }
