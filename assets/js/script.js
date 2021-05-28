@@ -54,13 +54,15 @@ var quizTime = 0;
 var startBtn = document.querySelector("#startButton");
 var questionNumber = 0
 var finalQuestion = quizQuestions.length
-var currentQuestion = 0
-var correct;
 var buttonA = document.getElementById("btn0");
 var buttonB = document.getElementById("btn1");
 var buttonC = document.getElementById("btn2");
 var buttonD = document.getElementById("btn3");
 
+buttonA.addEventListener("click",checkAnswer)
+buttonB.addEventListener("click", checkAnswer)
+buttonC.addEventListener("click", checkAnswer)
+buttonD.addEventListener("click", checkAnswer)
 startBtn.addEventListener("click", startQuiz) 
 
 function startQuiz () {
@@ -103,19 +105,22 @@ function firstScreen() {
     buttonB.innerHTML = currentQuestion.choiceB;
     buttonC.innerHTML = currentQuestion.choiceC;
     buttonD.innerHTML = currentQuestion.choiceD;
+
+
 }
 
-function checkAnswer(answer){
-    correct = quizQuestions[currentQuestion].correctAnswer;
-
-    if (answer === correct && currentQuestion !== finalQuestion){
+function checkAnswer(event){
+    console.log(event.target.textContent)
+    var correct = quizQuestions[questionNumber].answer;
+    console.log(correct)
+     if (answer === correct && currentQuestion !== finalQuestion){
         score++;
         alert("Correct!");
-        currentQuestion++;
-        generateQuizQuestion();
-    }else if (answer !== correct && currentQuestion !== finalQuestion){
+        questionNumber++;
+        firstScreen();
+    } else if (answer !== correct && currentQuestion !== finalQuestion){
         alert("Incorrect.")
-        currentQuestion++;
+        questionNumber++;
         firstScreen();  
-    }
+     }
 }
