@@ -138,17 +138,14 @@ function finalScore(){
     var score=document.querySelector('#score')
     score.style.visibility="visible"
 
-    console.log('test')
-
-
     var submit = document.getElementById("submitInitialBtn")
 
     submit.addEventListener("click", function(){
-        var initials = document.querySelector('.initials').value;
+        var initials = document.querySelector('#initials').value;
         var score=timeLeft;
-
         
-       localStorage.setItem(initials,score )
+       localStorage.setItem(initials,score)
+        var initials = localStorage.getItem("initials")
     });  
     
 }
