@@ -53,6 +53,12 @@ var quizTime = 0;
 // Variables for start button.
 var startBtn = document.querySelector("#startButton");
 var questionNumber = 0
+var finalQuestion = quizQuestions.length
+var currentQuestion = 0
+var buttonA = document.getElementById("btn0");
+var buttonB = document.getElementById("btn1");
+var buttonC = document.getElementById("btn2");
+var buttonD = document.getElementById("btn3");
 
 startBtn.addEventListener("click", startQuiz) 
 
@@ -85,8 +91,16 @@ function firstScreen() {
     var choices = document.querySelector("#questionSection");
     container.style.visibility = "hidden";
     score.style.visibility = "hidden";
+    if (questionNumber === finalQuestion){
+        return score();
+    }
+    var currentQuestion = quizQuestions[currentQuestion];
+    quizQuestions.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    buttonA.innerHTML = currentQuestion.choiceA;
+    buttonB.innerHTML = currentQuestion.choiceB;
+    buttonC.innerHTML = currentQuestion.choiceC;
+    buttonD.innerHTML = currentQuestion.choiceD;
 
-    document.getElementById("questionTitle").textContent = quizQuestions;
 
     // quiz(questionNumber);
 
