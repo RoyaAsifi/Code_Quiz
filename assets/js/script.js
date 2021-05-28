@@ -6,7 +6,7 @@ var quizQuestions = [
         choiceB: "booleans", 
         choiceC: "alerts", 
         choiceD: "numbers",
-        answer: "c. alerts"
+        answer: "alerts"
     },
     {
         question: "The condition in an if/else statement is enclosed within _____:",
@@ -14,7 +14,7 @@ var quizQuestions = [
         choiceB: "curly brackets", 
         choiceC: "parenthesis",
         choiceD: "square brackets",
-        answer: "c. parenthesis"
+        answer: "parenthesis"
     },
     {
         question: "Arrays in a JavaScript can be used to store:",
@@ -22,7 +22,7 @@ var quizQuestions = [
         choiceB: "other arrays", 
         choiceC: "booleans", 
         choiceD: "all of the above",
-        answer: "d. all of the above"
+        answer: "all of the above"
     },
     {
         question: "String values muse be enclosed within ______ when being assigned to variables.",
@@ -30,7 +30,7 @@ var quizQuestions = [
         choiceB: "curly brackets", 
         choiceC: "quotes", 
         choiceD: "parenthesis",
-        answer: "c. quotes"
+        answer: "quotes"
     },
     {
         question: "A very useful tool during development and debugging for printing content to the debugger is:",
@@ -83,6 +83,7 @@ function startTimer() {
         else {
             clearInterval(timeSet)
             console.log("times up")
+            alert("Quiz Over!")
             //quizOver();
         }
     }, 1000);
@@ -108,7 +109,7 @@ function firstScreen() {
     buttonD.innerHTML = currentQuestion.choiceD;
 }
 function score(event) {
-    
+
 }
 
 function checkAnswer(event){
@@ -125,5 +126,6 @@ function checkAnswer(event){
         alert("Incorrect.")
         questionNumber++;
         firstScreen();  
+        timeSet.innerHTML = -10;
      }
 }
