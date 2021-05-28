@@ -35,15 +35,10 @@ var timeleft = 0;
 var quizTime = 0;
 
 // Variables for start button.
-var startBtn = document.querySelector("startButton");
+var startBtn = document.querySelector("#startButton");
 var questionNumber = 0
 
-startBtn.addEventListener("click", startQuiz) {
-    startQuiz.preventDefault();
-    startTimer();
-    startQuiz();
-};
-
+startBtn.addEventListener("click", startQuiz) 
 
 function startQuiz () {
     console.log("Quiz has started")
@@ -51,6 +46,7 @@ function startQuiz () {
     startTimer();
     firstScreen();
 }
+
 function startTimer() {
     timer.innerHTML = (timeLeft);
     quizTime = setInterval(cntDown, 1000);
@@ -67,7 +63,13 @@ function cntDown() {
     return;
 }
 function firstScreen() {
-    document.querySelectorAll("container").forEach(container.display = "none")
-    document.querySelectorAll("quizSection").forEach(quizSection.display = "initial")
+    document.querySelectorAll(".container");
+    document.querySelectorAll("#questionSection");
     quiz(questionNumber);
+}
+function container() {
+
+}
+function quiz() {
+    questions();
 }
