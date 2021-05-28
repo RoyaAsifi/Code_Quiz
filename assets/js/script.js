@@ -38,7 +38,7 @@ var quizQuestions = [
         choiceB: "terminal/bash", 
         choiceC: "for loops", 
         choiceD: "console.log",
-        answer: "d. console.log"
+        answer: "console.log"
     }
 ];
 
@@ -97,7 +97,7 @@ function firstScreen() {
     container.style.visibility = "hidden";
     score.style.visibility = "hidden";
     if (questionNumber === finalQuestion){
-        return score();
+        return score;
     }
     var currentQuestion = quizQuestions[questionNumber];
     const questionP = document.querySelector("#questionTitle");
