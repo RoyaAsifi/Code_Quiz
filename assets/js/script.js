@@ -46,7 +46,7 @@ var quizQuestions = [
 var timeDisplay = document.querySelector("topBar");
 var timer = document.getElementById("timer");
 var countdown = document.getElementById("timeLeft");
-var timeLeft = 0;
+var timeLeft = 60;
 var timeSet;
 var quizTime = 0;
 
@@ -67,7 +67,7 @@ startBtn.addEventListener("click", startQuiz)
 
 function startQuiz () {
     console.log("Quiz has started")
-    timeLeft = 100
+    timeLeft = 60
     startTimer();
     firstScreen();
 }
@@ -126,6 +126,6 @@ function checkAnswer(event){
         alert("Incorrect.")
         questionNumber++;
         firstScreen();  
-        timeSet.innerHTML = -10;
+        timeSet.innerHTML = timeLeft -= 10
      }
 }
