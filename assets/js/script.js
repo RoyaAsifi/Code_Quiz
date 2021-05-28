@@ -92,6 +92,7 @@ function startTimer() {
 function firstScreen() {
     var container = document.querySelector(".container");
     var choices = document.querySelector("#questionSection");
+    var score = document.getElementById("score")
     container.style.visibility = "hidden";
     score.style.visibility = "hidden";
     if (questionNumber === finalQuestion){
@@ -105,20 +106,22 @@ function firstScreen() {
     buttonB.innerHTML = currentQuestion.choiceB;
     buttonC.innerHTML = currentQuestion.choiceC;
     buttonD.innerHTML = currentQuestion.choiceD;
-
-
+}
+function score(event) {
+    
 }
 
 function checkAnswer(event){
     console.log(event.target.textContent)
     var correct = quizQuestions[questionNumber].answer;
+    var userAns = event.target.textContent
     console.log(correct)
-     if (answer === correct && currentQuestion !== finalQuestion){
+     if (userAns === correct && questionNumber !== finalQuestion){
         score++;
         alert("Correct!");
         questionNumber++;
         firstScreen();
-    } else if (answer !== correct && currentQuestion !== finalQuestion){
+    } else if (userAns !== correct && questionNumber !== finalQuestion){
         alert("Incorrect.")
         questionNumber++;
         firstScreen();  
