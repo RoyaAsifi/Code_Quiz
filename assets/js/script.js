@@ -50,15 +50,16 @@ var timeLeft = 60;
 var timeSet;
 var quizTime = 0;
 
-// Variables for start button.
-var startBtn = document.querySelector("#startButton");
+// Other variables
 var questionNumber = 0
 var finalQuestion = quizQuestions.length
 var buttonA = document.getElementById("btn0");
 var buttonB = document.getElementById("btn1");
 var buttonC = document.getElementById("btn2");
 var buttonD = document.getElementById("btn3");
+var startBtn = document.querySelector("#startButton");
 
+// Event listeners
 buttonA.addEventListener("click",checkAnswer)
 buttonB.addEventListener("click", checkAnswer)
 buttonC.addEventListener("click", checkAnswer)
@@ -108,9 +109,6 @@ function firstScreen() {
     buttonC.innerHTML = currentQuestion.choiceC;
     buttonD.innerHTML = currentQuestion.choiceD;
 }
-function score(event) {
-
-}
 
 function checkAnswer(event){
     console.log(event.target.textContent)
@@ -120,20 +118,28 @@ function checkAnswer(event){
      if (userAns === correct && questionNumber !== finalQuestion){
         score++;
         alert("Correct!");
-        if (questionNumber !== (questionNumber.length - 1)){
         questionNumber++;
-        } else{
-        return score;
-        }
         firstScreen();
      } else if (userAns !== correct && questionNumber !== finalQuestion){
         alert("Incorrect.")
-        if (questionNumber !== (quizQuestions.length - 1)){
         questionNumber++;
-        }else{
-        return score;
-        }
         firstScreen();  
         timeSet.innerHTML = timeLeft -= 10
      } 
+     if (finalQuestion -1 == questionNumber){
+         console.log ("test")
+     }
+}
+
+function finalScore(event){
+    document.querySelector(".quiz").forEach(quiz => { quiz.style.display = "none" })
+
+    timer.innerHTML = (0)
+
+    var submit = document.getElementById("submitInitialBtn")
+    submit.addEventListener("click", function(){
+        var value = document.querySelector('.initials').value;
+       localStorage.setItem(value, score)
+    });  
+    clearInterval(quizQuestions)
 }
